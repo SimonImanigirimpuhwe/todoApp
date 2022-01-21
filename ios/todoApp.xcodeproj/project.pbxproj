@@ -114,7 +114,6 @@
 				56976AB611EB851979FB3259 /* Pods-todoApp-todoAppTests.debug.xcconfig */,
 				E46CA968551248E39D492583 /* Pods-todoApp-todoAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};

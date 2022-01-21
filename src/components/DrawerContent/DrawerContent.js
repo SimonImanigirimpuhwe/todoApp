@@ -1,52 +1,36 @@
-import React, {useState, useEffect} from 'react';
-import {DrawerContentScrollView, DrawerItem} from 'react-navigation-drawer';
+import React from 'react';
+import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
 import {TouchableOpacity, SafeAreaView, View} from 'react-native';
-import {NavigationActions} from 'react-navigation';
 import {Avatar, Caption, Drawer, Paragraph} from 'react-native-paper';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import {Icon} from '../Icon';
 import styles from './styles';
 import {appColors} from '../../assets/theme/Colors';
-// import {get_storage} from '../../utils/storage';
-import { CREATE_SCREEN, DASHBOARD_SCREEN, EDIT_SCREEN } from '../../constants/routeNames';
+import { CREATE_SCREEN, DASHBOARD_SCREEN, EDIT_SCREEN, LOGIN_SCREEN } from '../../constants/routeNames';
+import { photo_url, user_storage } from '../../utils/constants';
 
 
-const data=[
-  {name: 'md-home-outline', type: 'ionicon', title: 'Home'},
-  {name: 'attach-money', type: 'material', title: 'Revenue'},
-  {name: 'money-off', type: 'material', title: 'Expense'},
-  {name: 'balance-scale', type: 'fa', title: 'Balance'},
-  {name: 'user', type: 'feather', title: 'Me'},
-]
-const DrawerContent = ({navigation}) => {
-  // const [profile, setProfile] = useState({});
+const DrawerContent = ({data, navigation}) => {
 
-  // const get_data = async () => {
-  //   const storage = await get_storage();
-  //   setProfile(storage);
-  // };
-
-  // useEffect(() => {
-  //   get_data();
-  // }, []);
-
-  const navigateToScreen = route => () => {
-    const navigateAction = NavigationActions.navigate({
-      routeName: route,
-    });
-    navigation.dispatch(navigateAction);
+  const navigateToScreen = route => {
+    navigation.navigate(route)
   };
+
+  const handleLogout = async() => {
+    navigation.navigate('auth')
+  }
 
   const handlePress = routeName => {
     switch (routeName.toLowerCase()) {
-      case 'home':
+      case 'dashboard':
         return navigateToScreen(DASHBOARD_SCREEN);
       case 'create':
         return navigateToScreen(CREATE_SCREEN);
       case 'edit':
         return navigateToScreen(EDIT_SCREEN);
-      case 'me':
-        return navigateToScreen(PROFILE_SCREEN);
+      case 'logout':
+        return handleLogout()
       default:
         break;
     }
@@ -57,14 +41,14 @@ const DrawerContent = ({navigation}) => {
         <View>
           <TouchableOpacity
             style={styles.profile}
-            onPress={() => handlePress('me')}>
-            <Avatar.Image source={{uri: profile.photo_url}} size={60} />
+            onPress={() => handlePress(DASHBOARD_SCREEN)}>
+            <Avatar.Image source={{uri: photo_url}} size={60} />
             <View style={styles.profile_info}>
               <Paragraph
                 style={{
                   textTransform: 'capitalize',
                 }}>{`${'profile.last_name'} ${'profile.first_name'}`}</Paragraph>
-              <Caption>{'profile.email'}</Caption>
+              <Caption>{'test@gmail.com'}</Caption>
             </View>
           </TouchableOpacity>
           <Drawer.Section style={styles.linkItems}>

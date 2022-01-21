@@ -1,13 +1,11 @@
 import React from 'react';
 import { View , StatusBar} from 'react-native';
-import {NavigationActions} from 'react-navigation';
 
 import {Landing} from '../components/Landing';
 
 const LandingScreen = ({navigation}) => {
     const gotoScreen = (route) => {
-        const navigateAction = NavigationActions.navigate({routeName: route})
-        navigation.dispatch(navigateAction)
+        navigation.navigate(route)
     }
   return (
       <View>

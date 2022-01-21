@@ -1,6 +1,5 @@
 import {StyleSheet} from 'react-native';
 import {appColors} from '../../assets/theme/Colors';
-import {Fonts} from '../../assets/theme/Fonts';
 
 export default StyleSheet.create({
   container: {
@@ -8,7 +7,6 @@ export default StyleSheet.create({
   },
   label: {
     paddingBottom: 5,
-    fontFamily: Fonts.FontBold,
   },
   input: {
     flexDirection: 'row',

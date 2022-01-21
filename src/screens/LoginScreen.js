@@ -1,8 +1,6 @@
 import React, {useState} from 'react';
-import { NavigationActions } from 'react-navigation';
 
 import {Login} from '../components/Login';
-import { DASHBOARD_SCREEN, HOME_SCREEN } from '../constants/routeNames';
 
 const LoginScreen = ({navigation}) => {
   const [formErr, setFormErr] = useState({});
@@ -17,8 +15,7 @@ const LoginScreen = ({navigation}) => {
 
 
   const goToScreen = (route) => {
-    const navigateAction = NavigationActions.navigate({routeName: route})
-    navigation.dispatch(navigateAction)
+    navigation.navigate(route)
 }
 
 const handleSubmit = () => {
@@ -31,13 +28,10 @@ const handleSubmit = () => {
       password: 'Password is required',
     });
   } else {
-    console.log('credentials', {
-      email,
-      password,
-    });
     if (email === "test@gmail.com" && password === "Test123") {
-      goToScreen(DASHBOARD_SCREEN)
-      // goToScreen(HOME_SCREEN)
+      goToScreen('Drawer')
+      setEmail('')
+      setPassword('')
     } else {
       setErr("Invalid credentials")
     }
@@ -52,4 +46,3 @@ const handleSubmit = () => {
 };
 export default LoginScreen;
 
-// album-photos-search-api

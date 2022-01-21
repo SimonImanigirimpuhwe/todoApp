@@ -27,7 +27,8 @@ const BottomTab = () => {
         name={DASHBOARD_SCREEN}
         component={DashboardScreen}
         options={{
-          tabBarLabel: 'HOME',
+          headerShown: false,
+          tabBarLabel: 'Home',
           tabBarIcon: ({focused}) => (
             <Icon
               type="ionicon"
@@ -40,10 +41,11 @@ const BottomTab = () => {
       />
       <Tab.Screen
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Icon
               type="material"
-              name="attach-money"
+              name="add"
               size={25}
               color={focused ? appColors.primary : appColors.secondary}
             />
@@ -54,10 +56,11 @@ const BottomTab = () => {
       />
       <Tab.Screen
         options={{
+          headerShown: false,
           tabBarIcon: ({focused}) => (
             <Icon
-              type="material"
-              name="money-off"
+              type="feather"
+              name="edit"
               size={25}
               color={focused ? appColors.primary : appColors.secondary}
             />
